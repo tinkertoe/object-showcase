@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>Pflanze!</title>
+		<link rel="icon" href="../img/favicon.png">
+
+		<link rel="stylesheet" href="../css/master.css">
+		<link rel="stylesheet" href="../css/objects.css">
+
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poiret+One">
+		<script src="../granim.min.js"></script>
+
+		<style>
+			/* Objekt unter rechts fixieren */
+			.object {
+			  position: fixed;
+			  bottom: 0;
+				right: 0;
+				margin-right: 1.5em;
+				margin-bottom: 0em;
+				width: 200px;
+			}
+
+			/* Objekt Animation */
+			@keyframes object-anim {
+				0%, 100% {
+					transform: translateX(0px);
+				}
+
+				25% {
+					transform: translateX(2px);
+				}
+
+				50% {
+					transform: translateX(-2px);
+				}
+			}
+
+			.object-img.animate {
+				animation-name: object-anim;
+				animation-duration: 0.3s;
+				animation-iteration-count: 6;
+				animation-timing-function: linear;
+			}
+		</style>
+	</head>
+
+
+
+
+
+	<body>
+		<!-- Hintergrund -->
+		<canvas id="background_canvas"></canvas>
+
+		<!-- Zurückbutton -->
+		<a href="../index.html"><img class="back" src="../img/back.svg" width="100px"></a>
+
+		<!-- Titel -->
+		<h1 class="title">
+			LASS DEINE<br>
+			PFLANZEN<br>
+			WACHSEN!<br>
+		</h1>
+
+		<!-- Objekt -->
+		<div class="object">
+			<img src="../img/arrow.svg" class="arrow">
+			<img id="object-img" class="object-img" src="../img/plant.svg" width="200px" style="cursor: pointer;">
+		</div>
+
+
+		<script type="text/javascript">
+
+			// Variablen setzen
+			const audio = new Audio("../sounds/plant.mp3");
+			const objectImg = document.getElementById('object-img')
+
+			// Auf schwebende Maus hören
+			objectImg.addEventListener("mouseover", function () {
+				background.changeState('hover-state')
+			})
+
+			objectImg.addEventListener("mouseout", function () {
+				background.changeState('default-state')
+			})
+
+			// Auf Klick hören
+			objectImg.addEventListener("click", function () {
+				audio.play()
+
+				/*
+					Element wird nur animiert wenn es "animate" Klasse hat
+					Klasse wird entfernt und kurz danach wieder hinzugefügt
+					Dies ist notwendig um Animation neuzustarten
+				*/
+				objectImg.classList.remove('animate');
+
+				window.setTimeout(function () {
+					objectImg.classList.add('animate');
+				}, 50)
+
+			})
+
+
+			// Hintergrundgröße anpassen
+			function updateDimensions() {
+				var canvas_element = document.getElementById('background_canvas')
+				canvas_element.width = window.innerWidth
+				canvas_element.height = window.innerHeight
+			}
+			updateDimensions()
+
+			// Auf Fenstergröße anpassen hören
+			window.addEventListener("resize", updateDimensions);
+
+
+			// Hintergrund Animation
+			var background = new Granim({
+					element: '#background_canvas',
+					direction: 'left-right',
+					states : {
+						"default-state": {
+							gradients: [
+								['#EFCECE']
+							]
+						},
+
+						"hover-state": {
+							gradients: [
+									['#d6e4a1'],
+							]
+						}
+					}
+			})
+		</script>
+	</body>
+</html>

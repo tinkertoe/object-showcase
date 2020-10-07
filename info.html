@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>Coole Objekte!</title>
+		<link rel="icon" href="../img/favicon.png">
+
+		<link rel="stylesheet" href="css/master.css">
+		<link rel="stylesheet" href="css/info.css">
+
+		<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400i&display=swap" rel="stylesheet">
+		<script src="granim.min.js"></script>
+	</head>
+	<body>
+
+		<!-- Hintergrundanimation -->
+		<canvas id="background_canvas"></canvas>
+
+		<!-- Zurückbutton -->
+		<a href="index.html"><img class="back" src="img/back.svg" width="100px"></a>
+
+		<!-- Informationen -->
+		<div class="center">
+
+			<div style="text-align: center;">
+				<h1>&copy; 2019 Henry Muth</h1>
+				<hr>
+			</div>
+
+			<ul class="list">
+				<li>Schriftarten
+					<ul>
+						<li>PoiretOne
+						<li>IBM Plex Sans
+					</ul>
+				<li>Sounds
+					<ul>
+						<li>Minecraft
+						<li>Picture to sound (YouTube)
+						<li>salamisound.de
+						<li>MrSnooze (YouTube)
+					</ul>
+				<li>granim.js (Hintergrundanimation)
+			</ul>
+
+		</div>
+
+
+		<script type="text/javascript">
+
+			// Hintergrundgröße anpassen
+			function updateDimensions() {
+				var canvas_element = document.getElementById('background_canvas')
+				canvas_element.width = window.innerWidth
+				canvas_element.height = window.innerHeight
+			}
+			updateDimensions()
+
+			// Auf Fenstergröße anpassen hören
+			window.addEventListener("resize", updateDimensions);
+
+
+			// Hintergrund Animation
+			var background = new Granim({
+					element: '#background_canvas',
+					direction: 'left-right',
+					states : {
+						"default-state": {
+							gradients: [
+								['#EFCECE']
+							]
+						}
+					}
+			});
+		</script>
+	</body>
+</html>

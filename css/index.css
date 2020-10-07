@@ -1,0 +1,38 @@
+/* In horizontale und vertikale Mitte setzen */
+.center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/* Infobutton */
+.info {
+	position: fixed;
+	top: 0;
+	left: 0;
+	margin: 1.5em;
+	transition: all 0.2s ease;
+}
+
+/* Hover Animation */
+.info:hover {
+	transform: scale(1.1);
+}
+
+/* Linien um ausgewählten Link entfernen */
+a:focus {
+	outline: none;
+}
+
+/* Objekte */
+.object {
+	margin: 3em;
+	transition: all 0.2s ease;
+}
+
+
+/* Hover Animation */
+.object:hover {
+	transform: scale(1.2);
+}

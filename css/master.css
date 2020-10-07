@@ -1,0 +1,28 @@
+/* Scrolllinien verstecken */
+body, html{
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+}
+
+/* Hintergrundelement in Hintergrund setzen */
+#background_canvas {
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 0;
+}
+
+/* Zurückbutton */
+.back {
+	position: fixed;
+	top: 0;
+	left: 0;
+	transition: all 1s ease;
+	transform: translate(-30px, -30px);
+}
+
+/* Zurückbutton Animation */
+.back:hover {
+	transform: translate(0px, 0px);
+}

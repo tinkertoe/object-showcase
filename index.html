@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>Coole Objekte!</title>
+		<link rel="icon" href="../img/favicon.png">
+
+		<link rel="stylesheet" href="css/master.css">
+		<link rel="stylesheet" href="css/index.css">
+
+		<script src="granim.min.js"></script>
+	</head>
+	<body>
+
+		<!-- Hintergrundanimation -->
+		<canvas id="background_canvas"></canvas>
+
+		<!-- Info Button -->
+		<a href="info.html"><img src="img/info.svg" width="50px" class="info"></a>
+
+		<!-- Tabelle mit Objekten -->
+		<div class="center">
+			<table>
+				<tr>
+					<td>
+						<a href="objects/plant.html"><img src="img/plant.svg" width="150px" class="object" id="plant"></a>
+					</td>
+
+					<td>
+						<a href="objects/bell.html"><img src="img/bell.svg" width="150px" class="object" id="bell"></a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="objects/heart.html"><img src="img/heart.svg" width="150px" class="object" id="heart"></a>
+					</td>
+
+					<td>
+						<a href="objects/strawberry.html"><img src="img/strawberry.svg" width="150px" class="object" id="strawberry"></a>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<script type="text/javascript">
+
+			// Auf Mausschweben hören (Pflanze)
+			document.getElementById('plant').addEventListener("mouseover", function () {
+				background.changeState('plant-state')
+			})
+			document.getElementById('plant').addEventListener("mouseout", function () {
+				background.changeState('default-state')
+			})
+
+			// Auf Mausschweben hören (Glocke)
+			document.getElementById('bell').addEventListener("mouseover", function () {
+				background.changeState('bell-state')
+			})
+			document.getElementById('bell').addEventListener("mouseout", function () {
+				background.changeState('default-state')
+			})
+
+			// Auf Mausschweben hören (Herz)
+			document.getElementById('heart').addEventListener("mouseover", function () {
+				background.changeState('heart-state')
+			})
+			document.getElementById('heart').addEventListener("mouseout", function () {
+				background.changeState('default-state')
+			})
+
+			// Auf Mausschweben hören (Erdbeere)
+			document.getElementById('strawberry').addEventListener("mouseover", function () {
+				background.changeState('strawberry-state')
+			})
+			document.getElementById('strawberry').addEventListener("mouseout", function () {
+				background.changeState('default-state')
+			})
+
+
+
+			// Hintergrundgröße anpassen
+			function updateDimensions() {
+				var canvas_element = document.getElementById('background_canvas')
+				canvas_element.width = window.innerWidth
+				canvas_element.height = window.innerHeight
+			}
+			updateDimensions()
+
+			// Auf Fenstergröße anpassen hören
+			window.addEventListener("resize", updateDimensions);
+
+
+			// Hintergrund Animation
+			var background = new Granim({
+					element: '#background_canvas',
+					direction: 'left-right',
+					states : {
+						"default-state": {
+							gradients: [
+								['#EFCECE']
+							]
+						},
+
+						"plant-state": {
+							gradients: [
+									['#d6e4a1'],
+							]
+						},
+
+						"bell-state": {
+							gradients: [
+									['#FFE4A9'],
+							]
+						},
+
+						"heart-state": {
+							gradients: [
+									['#FF9797'],
+							]
+						},
+
+						"strawberry-state": {
+							gradients: [
+									['#AEDAFF'],
+							]
+						}
+					}
+			});
+		</script>
+	</body>
+</html>

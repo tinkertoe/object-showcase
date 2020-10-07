@@ -1,0 +1,35 @@
+/* Globale Farbe/Schriftart setzen */
+body, html {
+	font-family: 'IBM Plex Sans', sans-serif;
+	color: #222222;
+}
+
+/* In horizontale und vertikale Mitte setzen */
+.center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/* Überschrift */
+h1 {
+	font-size: 3em;
+	margin: 0;
+}
+
+/* Trennungsstrich */
+hr {
+	border: 2px solid #222222;
+	border-radius: 5px;
+}
+
+/* Liste */
+.list {
+	font-size: 1.5em;
+}
+
+/* Linien um ausgewählten Link entfernen */
+a:focus {
+	outline: none;
+}
